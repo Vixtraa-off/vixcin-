@@ -1,27 +1,10 @@
 <!DOCTYPE html>
-<html lang="fr">
-<head>
-  <meta charset="UTF-8">
-  <title>VixCiné</title>
-  <style>
-    html, body {
-      margin: 0;
-      padding: 0;
-      background-color: black;
-      overflow: hidden;
-    }
-    video {
-      width: 100vw;
-      height: 100vh;
-      object-fit: cover;
-      display: block;
-    }
-  </style>
-</head>
-<body>
-  <video autoplay loop muted playsinline>
-    <source src="VixCiné.mp4" type="video/mp4">
-    Votre navigateur ne prend pas en charge la vidéo.
-  </video>
-</body>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <title>Lecture vidéo</title>
+  </head>
+  <body style="margin:0; background:black;">
+    <video src="VixCiné.mp4" autoplay loop muted playsinline style="width:100vw; height:100vh; object-fit:cover;"></video>
+  </body>
 </html>
