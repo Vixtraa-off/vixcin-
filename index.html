@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <title>VixCiné</title>
   <style>
-    body, html {
+    html, body {
       margin: 0;
       padding: 0;
       background-color: black;
@@ -14,13 +14,14 @@
       width: 100vw;
       height: 100vh;
       object-fit: cover;
+      display: block;
     }
   </style>
 </head>
 <body>
-  <video autoplay loop muted>
+  <video autoplay loop muted playsinline>
     <source src="VixCiné.mp4" type="video/mp4">
-    Votre navigateur ne supporte pas la vidéo.
+    Votre navigateur ne prend pas en charge la vidéo.
   </video>
 </body>
 </html>
