@@ -16,11 +16,8 @@
     font-family:'Segoe UI',sans-serif;
 }
 
-
 body{
-
     height:100vh;
-
     background:
     linear-gradient(
         rgba(0,0,0,.75),
@@ -34,140 +31,95 @@ body{
 
     color:white;
     overflow:hidden;
-
 }
 
 
-/* Effet lumière cinéma */
-
 body:before{
-
     content:"";
-
     position:absolute;
-
     width:600px;
     height:600px;
-
     background:#008cff;
-
     filter:blur(180px);
-
     opacity:.25;
-
     animation:light 5s infinite alternate;
-
 }
 
 
 @keyframes light{
-
 from{
     transform:translate(-200px,-100px);
 }
-
 to{
     transform:translate(200px,100px);
 }
-
 }
 
 
 
 #home{
-
     text-align:center;
     z-index:2;
-
 }
-
 
 
 .logo{
 
     font-size:90px;
-
     font-weight:900;
-
     letter-spacing:10px;
 
-    color:white;
-
     text-shadow:
-
     0 0 10px #00aaff,
     0 0 40px #008cff,
     0 0 80px #0066ff;
-
 }
-
 
 
 .subtitle{
-
     font-size:22px;
-
     margin-top:15px;
-
     color:#aaa;
-
 }
-
-
 
 
 
 .buttons{
 
     margin-top:80px;
-
     display:flex;
-
     gap:50px;
-
     justify-content:center;
 
 }
 
 
-
 .bigBtn{
 
     width:350px;
-
     height:140px;
 
     border-radius:25px;
-
     border:2px solid #008cff;
 
-
     background:
-
     linear-gradient(
         135deg,
         rgba(0,130,255,.35),
         rgba(0,0,0,.7)
     );
 
-
     color:white;
 
     font-size:30px;
-
     font-weight:bold;
 
     cursor:pointer;
-
     transition:.4s;
 
-
     box-shadow:
-
     0 0 30px #0077ff;
-
 }
-
 
 
 .bigBtn:hover{
@@ -175,39 +127,27 @@ to{
     transform:scale(1.08);
 
     box-shadow:
-
     0 0 70px #00aaff;
 
 }
 
 
 
-
-
 #youtubeBox{
-
     display:none;
-
 }
-
 
 
 input{
 
     width:450px;
-
     padding:20px;
 
     border-radius:15px;
-
     border:none;
 
     font-size:18px;
-
     text-align:center;
-
-    outline:none;
-
 }
 
 
@@ -217,11 +157,9 @@ input{
     margin-top:20px;
 
     width:250px;
-
     height:60px;
 
     border-radius:15px;
-
     border:none;
 
     background:#008cff;
@@ -230,10 +168,7 @@ input{
 
     font-size:20px;
 
-    cursor:pointer;
-
 }
-
 
 
 
@@ -246,10 +181,30 @@ input{
 
     z-index:9999;
 
+    display:none;
+
+    padding:15px 25px;
+
+    border-radius:15px;
+
+    border:2px solid #008cff;
+
+    background:#000b;
+
+    color:white;
+
+    font-size:20px;
+
+    cursor:pointer;
+
+}
+
 
 
 
 #player{
+
+    display:none;
 
     position:fixed;
 
@@ -261,31 +216,26 @@ input{
 
     background:black;
 
-    overflow:hidden;
-
     z-index:5;
 
 }
 
 
+
 #player video{
 
     width:100vw;
-
     height:100vh;
 
     object-fit:cover;
-
-    display:block;
 
 }
 
 
 
-video,iframe{
+iframe{
 
     width:100%;
-
     height:100%;
 
     border:0;
@@ -296,20 +246,15 @@ video,iframe{
 
 </style>
 
-
 </head>
 
 
 <body>
 
 
-
 <button id="back" onclick="home()">
-
 ⬅ Retour
-
 </button>
-
 
 
 
@@ -317,20 +262,13 @@ video,iframe{
 
 
 <div class="logo">
-
 VixCiné
-
 </div>
-
 
 
 <div class="subtitle">
-
 Votre cinéma privé immersif
-
 </div>
-
-
 
 
 <div class="buttons" id="buttons">
@@ -339,21 +277,16 @@ Votre cinéma privé immersif
 <button class="bigBtn" onclick="ambiance()">
 
 🎬
-
 <br>
-
 Ambiance salle
 
 </button>
 
 
-
 <button class="bigBtn" onclick="youtubeMenu()">
 
 ▶
-
 <br>
-
 YouTube
 
 </button>
@@ -363,30 +296,21 @@ YouTube
 
 
 
-
 <div id="youtubeBox">
-
 
 <input id="url" placeholder="Colle ton lien YouTube">
 
-
 <br>
 
-
 <button class="start" onclick="youtube()">
-
 Lancer la vidéo
-
 </button>
 
 
 </div>
 
 
-
 </div>
-
-
 
 
 
@@ -395,166 +319,109 @@ Lancer la vidéo
 
 
 
-
 <script>
-
-
-function fullscreen(el){
-
-    if(el.requestFullscreen){
-
-        el.requestFullscreen();
-
-    }
-
-    else if(el.webkitRequestFullscreen){
-
-        el.webkitRequestFullscreen();
-
-    }
-
-}
-
-
-
 
 
 function ambiance(){
 
-    let player = document.getElementById("player");
+let player=document.getElementById("player");
 
 
-    document.getElementById("home").style.display="none";
-    document.getElementById("back").style.display="block";
+document.getElementById("home").style.display="none";
+document.getElementById("back").style.display="block";
 
 
-    player.style.display="block";
+player.style.display="block";
 
 
-    player.innerHTML=`
+player.innerHTML=`
 
-    <video 
-    id="cinemaAmbiance"
-    autoplay
-    loop
-    muted
-    playsinline>
+<video 
+id="cinemaAmbiance"
+autoplay
+loop
+muted
+playsinline
+disablePictureInPicture>
 
-        <source src="VixCiné.webm" type="video/webm">
+<source src="VixCiné.webm" type="video/webm">
 
-    </video>
+</video>
 
-    `;
-
-
-
-    let video = document.getElementById("cinemaAmbiance");
+`;
 
 
-    video.play();
+let video=document.getElementById("cinemaAmbiance");
 
+
+video.play();
 
 }
-
-
 
 
 
 
 function youtubeMenu(){
 
+document.getElementById("buttons").style.display="none";
 
-    document.getElementById("buttons").style.display="none";
-
-
-    document.getElementById("youtubeBox").style.display="block";
-
+document.getElementById("youtubeBox").style.display="block";
 
 }
-
-
-
 
 
 
 
 function youtube(){
 
+let url=document.getElementById("url").value;
 
-    let url=document.getElementById("url").value;
-
-
-    let id="";
+let id="";
 
 
+if(url.includes("watch?v=")){
 
-    if(url.includes("watch?v=")){
+id=url.split("watch?v=")[1].split("&")[0];
 
+}
 
-        id=url.split("watch?v=")[1].split("&")[0];
+else if(url.includes("youtu.be/")){
 
+id=url.split("youtu.be/")[1];
 
-    }
+}
 
+else{
 
-    else if(url.includes("youtu.be/")){
-
-
-        id=url.split("youtu.be/")[1];
-
-
-    }
-
-
-    else{
-
-
-        alert("Lien YouTube invalide");
-
-
-        return;
-
-
-    }
-
-
-
-
-
-    document.getElementById("player").innerHTML=`
-
-    <iframe
-
-    src="https://www.youtube.com/embed/${id}?autoplay=1"
-
-    allow="autoplay; fullscreen"
-
-    allowfullscreen>
-
-    </iframe>
-
-    `;
-
-
-
-    document.getElementById("player").style.display="block";
-
-
-    document.getElementById("home").style.display="none";
-
-
-    document.getElementById("back").style.display="block";
-
-
-
-    fullscreen(document.getElementById("player"));
-
-
+alert("Lien YouTube invalide");
+return;
 
 }
 
 
 
+document.getElementById("player").innerHTML=`
+
+<iframe
+
+src="https://www.youtube.com/embed/${id}?autoplay=1"
+
+allow="autoplay; fullscreen"
+
+allowfullscreen>
+
+</iframe>
+
+`;
+
+
+document.getElementById("player").style.display="block";
+
+document.getElementById("home").style.display="none";
+
+document.getElementById("back").style.display="block";
+
+}
 
 
 
@@ -562,42 +429,27 @@ function youtube(){
 function home(){
 
 
+document.getElementById("player").innerHTML="";
 
-    document.getElementById("player").innerHTML="";
-
-
-    document.getElementById("player").style.display="none";
+document.getElementById("player").style.display="none";
 
 
+document.getElementById("home").style.display="block";
 
-    document.getElementById("home").style.display="block";
-
-
-    document.getElementById("back").style.display="none";
+document.getElementById("back").style.display="none";
 
 
-
-    document.getElementById("buttons").style.display="flex";
-
-
-    document.getElementById("youtubeBox").style.display="none";
+document.getElementById("buttons").style.display="flex";
 
 
-
-    if(document.fullscreenElement){
-
-        document.exitFullscreen();
-
-    }
+document.getElementById("youtubeBox").style.display="none";
 
 
 }
-
 
 
 </script>
 
 
 </body>
-
 </html>
