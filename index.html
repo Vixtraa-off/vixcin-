@@ -239,42 +239,44 @@ input{
 
 #back{
 
-    position:absolute;
+    position:fixed;
 
     top:20px;
-
     left:20px;
 
-    display:none;
-
-    padding:12px 25px;
-
-    border-radius:20px;
-
-    background:#111;
-
-    border:1px solid #008cff;
-
-    color:white;
-
-    cursor:pointer;
-
-    z-index:10;
-
-}
+    z-index:9999;
 
 
 
 
 #player{
 
-    display:none;
+    position:fixed;
 
-    position:absolute;
+    top:0;
+    left:0;
 
-    inset:0;
+    width:100vw;
+    height:100vh;
 
     background:black;
+
+    overflow:hidden;
+
+    z-index:5;
+
+}
+
+
+#player video{
+
+    width:100vw;
+
+    height:100vh;
+
+    object-fit:cover;
+
+    display:block;
 
 }
 
@@ -419,29 +421,24 @@ function fullscreen(el){
 
 function ambiance(){
 
-
     let player = document.getElementById("player");
+
+
+    document.getElementById("home").style.display="none";
+    document.getElementById("back").style.display="block";
 
 
     player.style.display="block";
 
 
-    document.getElementById("home").style.display="none";
-
-
-    document.getElementById("back").style.display="block";
-
-
-
     player.innerHTML=`
 
-<video 
-id="cinemaAmbiance"
-autoplay
-loop
-muted
-playsinline
-disablePictureInPicture>
+    <video 
+    id="cinemaAmbiance"
+    autoplay
+    loop
+    muted
+    playsinline>
 
         <source src="VixCiné.webm" type="video/webm">
 
@@ -454,49 +451,7 @@ disablePictureInPicture>
     let video = document.getElementById("cinemaAmbiance");
 
 
-
     video.play();
-
-
-
-    // Bloque les actions clavier (pause espace, flèches...)
-    video.addEventListener("keydown", function(e){
-
-        e.preventDefault();
-
-    });
-
-
-
-    // Empêche clic droit
-    video.addEventListener("contextmenu", function(e){
-
-        e.preventDefault();
-
-    });
-
-
-
-    // Empêche pause accidentelle
-    video.addEventListener("pause", function(){
-
-        video.play();
-
-    });
-
-
-
-    // Plein écran réel
-    if(video.requestFullscreen){
-
-        video.requestFullscreen();
-
-    }
-    else if(video.webkitRequestFullscreen){
-
-        video.webkitRequestFullscreen();
-
-    }
 
 
 }
