@@ -420,7 +420,10 @@ function fullscreen(el){
 function ambiance(){
 
 
-    document.getElementById("player").style.display="block";
+    let player = document.getElementById("player");
+
+
+    player.style.display="block";
 
 
     document.getElementById("home").style.display="none";
@@ -430,9 +433,14 @@ function ambiance(){
 
 
 
-    document.getElementById("player").innerHTML=`
+    player.innerHTML=`
 
-    <video autoplay loop controls>
+    <video 
+    id="cinemaAmbiance"
+    autoplay
+    loop
+    muted
+    playsinline>
 
         <source src="VixCiné.webm" type="video/webm">
 
@@ -442,17 +450,55 @@ function ambiance(){
 
 
 
-    let vid=document.querySelector("video");
+    let video = document.getElementById("cinemaAmbiance");
 
 
-    vid.play();
+
+    video.play();
 
 
-    fullscreen(vid);
+
+    // Bloque les actions clavier (pause espace, flèches...)
+    video.addEventListener("keydown", function(e){
+
+        e.preventDefault();
+
+    });
+
+
+
+    // Empêche clic droit
+    video.addEventListener("contextmenu", function(e){
+
+        e.preventDefault();
+
+    });
+
+
+
+    // Empêche pause accidentelle
+    video.addEventListener("pause", function(){
+
+        video.play();
+
+    });
+
+
+
+    // Plein écran réel
+    if(video.requestFullscreen){
+
+        video.requestFullscreen();
+
+    }
+    else if(video.webkitRequestFullscreen){
+
+        video.webkitRequestFullscreen();
+
+    }
 
 
 }
-
 
 
 
